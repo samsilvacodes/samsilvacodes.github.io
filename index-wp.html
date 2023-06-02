@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sublime Comporta — Guest relations | Mensagens WhatsApp para Parceiros</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Font Awesome CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+
+<body>
+  <div class="container mt-5">
+    <h1>Mensagens WhatsApp para Parceiros</h1>
+    <h4>Sublime Comporta | Guest Relations</h4>
+    <p>Clique nos botões abaixo para gerar as mensagens de texto e copiá-las.</p>
+    <hr>
+
+    <!-- Secção 1: botões de texto de pedidos de reserva -->
+    <h4>Pedido de Reserva</h4>
+    <button id="passeioBtn" class="btn btn-primary mt-3">Passeios / Restaurantes</button>
+    <button id="transporteBtn" class="btn btn-primary mt-3">Transporte</button>
+    <button id="clearBtn" class="btn btn-danger mt-3">Limpar</button>
+
+    <div id="textContainer" class="mt-3">
+      <!-- container para texto de output dos pedidos -->
+    </div>
+    <button id="copyBtn" class="btn btn-success mt-3 d-none">
+      <!-- botão para copiar -->
+      <i class="far fa-copy"></i> Copiar
+    </button>
+
+    <hr>
+
+    <!-- Secção 2: botões de texto de alteração de reserva -->
+    <h4>Alteração de Reserva</h4>
+    <button id="alteracaoPasseioBtn" class="btn btn-primary mt-3">Passeios / Restaurantes</button>
+    <button id="alteracaoTransporteBtn" class="btn btn-primary mt-3">Transporte</button>
+    <button id="clearAlteracaoBtn" class="btn btn-danger mt-3">Limpar</button>
+
+    <div id="alteracaoTextContainer" class="mt-3">
+      <!-- container para texto de output dos pedidos de alteração -->
+    </div>
+    <button id="copyAlteracaoBtn" class="btn btn-success mt-3 d-none">
+      <i class="far fa-copy"></i> Copiar
+    </button>
+
+    <hr>
+
+    <!-- Secção 2: botões de texto de cancelamento de reserva -->
+    <h4>Cancelar Reserva</h4>
+    <button id="cancelamentoPasseioBtn" class="btn btn-primary mt-3">Passeios / Restaurantes</button>
+    <button id="cancelamentoTransporteBtn" class="btn btn-primary mt-3">Transporte</button>
+    <button id="clearCancelamentoBtn" class="btn btn-danger mt-3">Limpar</button>
+
+    <div id="cancelamentoTextContainer" class="mt-3">
+      <!-- container para texto de output dos pedidos de cancelamento -->
+    </div>
+    <button id="copyCancelamentoBtn" class="btn btn-success mt-3 d-none">
+      <i class="far fa-copy"></i> Copiar
+    </button>
+
+    <hr>
+
+    <!-- Footer -->
+    <div class="mt-3">
+      <p class="text-muted" style="font-size: 10px;">@samsilvacodes x @sublimecomporta — 2023</p>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS e jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/js/bootstrap.min.js"></script>
+  <!-- Font Awesome JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+
+  <script>
+    // Função para comportamento do botão "Passeios / Restaurantes" da secção "Pedido de Reserva"
+    function handlePasseioButtonClick() {
+      var text = "Bom dia,\nPedido de reserva em nome de:\n\n[Nome do Cliente] — X pax\nDD de MMM, às HH:MM\n\nEmail: xxxx@xxxxx.xx\nTelefone: +xxxxxxxxxx\n\nÉ possível?\nObrigado\n__";
+
+      // Output do texto do template no container de texto:
+      document.getElementById("textContainer").innerText = text;
+
+      // Mostrar o botão de copiar:
+      document.getElementById("copyBtn").classList.remove("d-none");
+    }
+
+    // Função para o comportamento do botão "Transporte" da secção "Pedido de Reserva"
+    function handleTransporteButtonClick() {
+      var text = "Bom dia,\nPedido de transporte em nome de:\n\n[Nome do Cliente]\nX pax, X bagagens\nDD de MMM\n\nSaída: [local de saída]\nDestino: [local de destino]\n\nVôo: XXXXX, HH:MM\n\nEmail: xxx@xxxx.com\nTelefone: +XXXXXXX\n\nÉ possível? Obrigado\n__";
+
+      // Para o texto aparecer no container:
+      document.getElementById("textContainer").innerText = text;
+
+      // Mostrar o botão de copiar:
+      document.getElementById("copyBtn").classList.remove("d-none");
+    }
+
+    // Função para o comportamento do botão "Limpar" da secção "Pedido de Reserva"
+    function handleClearButtonClick() {
+      // Limpar o container de texto:
+      document.getElementById("textContainer").innerText = "";
+
+      // Esconder o botão de copiar:
+      document.getElementById("copyBtn").classList.add("d-none");
+    }
+
+    // Função para o comportamento do botão "Copiar" da secção "Pedido de Reserva"
+    function handleCopyButtonClick() {
+      // Copiar o texto que apareceu no container de texto:
+      var text = document.getElementById("textContainer").innerText;
+      navigator.clipboard.writeText(text);
+    }
+
+    // Event listeners para os botões da secção "Pedidos de Reserva"
+    document.getElementById("passeioBtn").addEventListener("click", handlePasseioButtonClick);
+    document.getElementById("transporteBtn").addEventListener("click", handleTransporteButtonClick);
+    document.getElementById("clearBtn").addEventListener("click", handleClearButtonClick);
+    document.getElementById("copyBtn").addEventListener("click", handleCopyButtonClick);
+
+    // Função para comportamento do botão "Passeios / Restaurantes" da secção "Alteração de Reserva"
+    function handleAlteracaoPasseioButtonClick() {
+      var text = "Bom dia,\nPedido de *alteração* de reserva em nome de:\n\n[Nome do Cliente] — X pax\nDD de MMM, às HH:MM\n\nAlteração de XX para YY\n\nEmail: xxxx@xxxxx.xx\nTelefone: +XXXXXXX\n\nÉ possível?\nObrigado\n__";
+
+      // Para aparecer o texto no container:
+      document.getElementById("alteracaoTextContainer").innerText = text;
+
+      // Para mostrar o botão de copiar:
+      document.getElementById("copyAlteracaoBtn").classList.remove("d-none");
+    }
+
+    // Função para o comportamento do botão "Transporte" da secção "Alteração de Reserva"
+    function handleAlteracaoTransporteButtonClick() {
+      var text = "Bom dia,\nPedido de *alteração* para transporte em nome de:\n\n[Nome do Cliente]\nX pax, X bagagens\nDD de MMM\n\nSaída: [local de saída]\nDestino: [local de destino]\n\nVôo: XXXXX, HH:MM\n\nAlteração de XX para YY\n\nEmail: xxxx@xxxxx.xx\nTelefone: +XXXXXXX\n\nÉ possível? Obrigado\n__";
+
+      // Para o texto aparecer no container:
+      document.getElementById("alteracaoTextContainer").innerText = text;
+
+      // Mostrar o botão de copiar:
+      document.getElementById("copyAlteracaoBtn").classList.remove("d-none");
+    }
+
+    // Função para o comportamento do botão "Limpar" da secção "Alteração de Reserva"
+    function handleClearAlteracaoButtonClick() {
+      // Para limpar o texto do container:
+      document.getElementById("alteracaoTextContainer").innerText = "";
+
+      // Para esconder o botão de copiar:
+      document.getElementById("copyAlteracaoBtn").classList.add("d-none");
+    }
+
+    // Função para o comportamento do botão "Copiar" da secção "Alteração de Reserva"
+    function handleCopyAlteracaoButtonClick() {
+      // Para copiar o texto do container:
+      var text = document.getElementById("alteracaoTextContainer").innerText;
+      navigator.clipboard.writeText(text);
+    }
+
+    // Event listeners dos botões da secção "Alteração de Reserva"
+    document.getElementById("alteracaoPasseioBtn").addEventListener("click", handleAlteracaoPasseioButtonClick);
+    document.getElementById("alteracaoTransporteBtn").addEventListener("click", handleAlteracaoTransporteButtonClick);
+    document.getElementById("clearAlteracaoBtn").addEventListener("click", handleClearAlteracaoButtonClick);
+    document.getElementById("copyAlteracaoBtn").addEventListener("click", handleCopyAlteracaoButtonClick);
+
+    // Função para o comportamento do botão "Passeios / Restaurantes" da decção "Cancelar Reserva"
+    function handleCancelamentoPasseioButtonClick() {
+      var text = "Bom dia,\nPedido de *cancelamento* de reserva em nome de:\n\n[Nome do Cliente] — X pax\nDD de MMM, às HH:MM\n\nCaso deseje informar alguma penalidade:\nEmail: xxxx@xxxxx.xx\nTelefone: +XXXXXXX\n\nObrigado\n__";
+
+      // Para o texto aparecer no container:
+      document.getElementById("cancelamentoTextContainer").innerText = text;
+
+      // Para aparecer o botão de copiar:
+      document.getElementById("copyCancelamentoBtn").classList.remove("d-none");
+    }
+
+    // Função para o comportamento do botão "Transporte" da secção "Cancelar Reserva"
+    function handleCancelamentoTransporteButtonClick() {
+      var text = "Bom dia,\nPedido de *cancelamento* para transporte em nome de:\n\n[Nome do Cliente]\nDD de MMM\n\nCaso deseje informar alguma penalidade:\nEmail: xxxx@xxxxx.xx\nTelefone: +XXXXXXX\n\nObrigado\n__";
+
+      // Para o texto aparecer no container:
+      document.getElementById("cancelamentoTextContainer").innerText = text;
+
+      // Para aparecer o botão de copiar:
+      document.getElementById("copyCancelamentoBtn").classList.remove("d-none");
+    }
+
+    // Função para o comportamento do botão "Clear" da secção "Cancelar Reserva"
+    function handleClearCancelamentoButtonClick() {
+      // Limpar o texto do container:
+      document.getElementById("cancelamentoTextContainer").innerText = "";
+
+      // Para esconder o botão de copiar:
+      document.getElementById("copyCancelamentoBtn").classList.add("d-none");
+    }
+
+    // Função para o comportamento do botão "Copy" da secção "Cancelar Reserva"
+    function handleCopyCancelamentoButtonClick() {
+      // Para copiar o texto do container:
+      var text = document.getElementById("cancelamentoTextContainer").innerText;
+      navigator.clipboard.writeText(text);
+    }
+
+    // Event listeners dos botões da secção "Cancelar Reserva"
+    document.getElementById("cancelamentoPasseioBtn").addEventListener("click", handleCancelamentoPasseioButtonClick);
+    document.getElementById("cancelamentoTransporteBtn").addEventListener("click", handleCancelamentoTransporteButtonClick);
+    document.getElementById("clearCancelamentoBtn").addEventListener("click", handleClearCancelamentoButtonClick);
+    document.getElementById("copyCancelamentoBtn").addEventListener("click", handleCopyCancelamentoButtonClick);
+  </script>
+</body>
+
+</html>
+
